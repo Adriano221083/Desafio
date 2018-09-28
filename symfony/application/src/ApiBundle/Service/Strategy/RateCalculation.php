@@ -17,16 +17,25 @@ use ApiBundle\Entity\Call;
  */
 class RateCalculation implements RateCalculationInterface
 {
+    /** @var Call $call */
+    private $call;
+
+    /**
+     * @return Call
+     */
     public function calculate()
     {
-        /** @var Call $call */
-        $call = new Call();
-
-        return $call;
+        return $this->call->setRateCost($this->call->getTime() * $this->call->getRate());
     }
 
+    /**
+     * @param Call $call
+     * @return $this
+     */
     public function setCall(Call $call)
     {
-        return new Call();
+        $this->call = $call;
+
+        return $this;
     }
 }

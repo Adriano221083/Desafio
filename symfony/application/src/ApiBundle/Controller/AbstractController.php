@@ -4,6 +4,7 @@ namespace ApiBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class AbstractController
@@ -20,23 +21,21 @@ abstract class AbstractController extends Controller
     protected function createResponse($responseContent, $responseCode = null)
     {
         if ($responseContent instanceof \Exception) {
-            $responseCode = !$responseCode ? 400 : $responseCode;
+            $responseCode = !$responseCode ? Response::HTTP_BAD_REQUEST : $responseCode;
 
             return new JsonResponse(
                 [
-                    'data' => [
-                        'message' => $responseContent->getMessage(),
-                        'type' => 'error',
-                        'status' => 'error',
-                        'file' => $responseContent->getFile(),
-                        'line' => $responseContent->getLine(),
-                    ]
+                    'message' => $responseContent->getMessage(),
+                    'type' => 'error',
+                    'status' => 'error',
+                    'file' => $responseContent->getFile(),
+                    'line' => $responseContent->getLine(),
                 ],
                 $responseCode
             );
         }
 
-        $responseCode = !$responseCode ? 200 : $responseCode;
+        $responseCode = !$responseCode ? Response::HTTP_OK : $responseCode;
         return new JsonResponse(
             $responseContent,
             $responseCode
