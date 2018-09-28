@@ -43,6 +43,7 @@ class CallNormalizerTest extends \PHPUnit_Framework_TestCase
         $call->setPlan($plan);
 
         $normalizedCall = $this->callNormalizer->normalize($call);
+
         $this->assertArrayHasKey('id', $normalizedCall);
         $this->assertArrayHasKey('origin', $normalizedCall);
         $this->assertArrayHasKey('destination', $normalizedCall);
