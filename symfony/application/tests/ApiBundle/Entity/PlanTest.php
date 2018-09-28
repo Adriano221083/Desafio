@@ -1,7 +1,6 @@
 <?php
 namespace Tests\ApiBundle\Entity;
 
-use ApiBundle\Entity\Call;
 use ApiBundle\Entity\Plan;
 
 /**
