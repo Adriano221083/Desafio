@@ -23,8 +23,8 @@ A Telzir, preocupada com a transparência junto aos seus clientes, quer disponib
 Ex:
 
 | Origem | Destino  |  Tempo | Plano | Com FaleMais | Sem FaleMais |
-|-----|-----|------|------|------|------|------|
-| 011 | 016 | 20 | FaleMais 30 | $ 0,00 | $ 38,00
-| 011 | 017 | 80 | FaleMais 60 | $ 37,40 | $ 136,00
-| 018 | 011 | 200 | FaleMais 120 | $ 167,20 | $ 380,00
-| 018 | 017 | 100 | FaleMais 30 | - | -
+|-----|-----|------|------|------|------|
+| 011 | 016 | 20 | FaleMais 30 | $ 0,00 | $ 38,00 |
+| 011 | 017 | 80 | FaleMais 60 | $ 37,40 | $ 136,00 |
+| 018 | 011 | 200 | FaleMais 120 | $ 167,20 | $ 380,00 |
+| 018 | 017 | 100 | FaleMais 30 | - | - |
