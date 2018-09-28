@@ -4,4 +4,9 @@ parameters:
 #    parameter_name: value
 
 services:
+  api.plan_rate_calculation:
+    class: ApiBundle\Service\Strategy\PlanRateCalculation
+  api.rate_calculation:
+    class: ApiBundle\Service\Strategy\RateCalculation
+
 

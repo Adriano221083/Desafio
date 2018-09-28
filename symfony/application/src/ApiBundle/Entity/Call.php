@@ -24,14 +24,14 @@ class Call
     /**
      * @var int
      *
-     * @ORM\Column(name="origin", type="integer")
+     * @ORM\Column(name="origin", type="string")
      */
     private $origin;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="destination", type="integer")
+     * @ORM\Column(name="destination", type="string")
      */
     private $destination;
 
