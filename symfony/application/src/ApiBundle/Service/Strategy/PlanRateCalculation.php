@@ -26,7 +26,7 @@ class PlanRateCalculation implements RateCalculationInterface
     {
         $this->call->setPlanRateCost(0);
 
-        $diffCallTimeAndPlanRateTime = $this->call->getTime() - $this->call->getPlan()->getRate();
+        $diffCallTimeAndPlanRateTime = $this->call->getTime() - $this->call->getPlan()->getTime();
 
         if ($diffCallTimeAndPlanRateTime > 0) {
             $additionalCallRatePercentage = $this->call->getRate() * self::CALL_RATE_PERCENTAGE;

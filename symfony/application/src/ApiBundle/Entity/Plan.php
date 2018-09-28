@@ -24,16 +24,16 @@ class Plan
     /**
      * @var string
      *
-     * @ORM\Column(name="origin", type="string")
+     * @ORM\Column(name="name", type="string")
      */
     private $name;
 
     /**
-     * @var float
+     * @var int
      *
-     * @ORM\Column(name="destination", type="float")
+     * @ORM\Column(name="time", type="integer")
      */
-    private $rate;
+    private $time;
 
     /**
      * @return int
@@ -68,27 +68,27 @@ class Plan
     }
 
     /**
-     * Set rate
+     * Set time
      *
-     * @param float $rate
+     * @param int $time
      *
      * @return Plan
      */
-    public function setRate($rate)
+    public function setTime($time)
     {
-        $this->rate = $rate;
+        $this->time = $time;
 
         return $this;
     }
 
     /**
-     * Get rate
+     * Get time
      *
-     * @return float
+     * @return int
      */
-    public function getRate()
+    public function getTime()
     {
-        return $this->rate;
+        return $this->time;
     }
 }
 

@@ -32,7 +32,7 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
             $plan = new Plan();
             $plan
                 ->setName($planDatum[0])
-                ->setRate($planDatum[1]);
+                ->setTime($planDatum[1]);
 
             $manager->persist($plan);
         }
