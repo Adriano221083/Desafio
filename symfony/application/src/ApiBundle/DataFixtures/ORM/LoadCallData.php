@@ -31,7 +31,6 @@ class LoadCallData extends AbstractFixture implements OrderedFixtureInterface
     {
 
         foreach ($this->callData as $callDatum) {
-            /** @var Call $call */
             $call = new Call();
             $call
                 ->setOrigin($callDatum[0])

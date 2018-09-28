@@ -5,6 +5,7 @@ use ApiBundle\Entity\Plan;
 
 /**
  * Class PlanTest
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
  * @covers \ApiBundle\Entity\Plan
  * @package ApiBundle\Tests\Entity
  */

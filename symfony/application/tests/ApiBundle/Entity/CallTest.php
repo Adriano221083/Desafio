@@ -6,6 +6,7 @@ use ApiBundle\Entity\Plan;
 
 /**
  * Class CallTest
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
  * @covers \ApiBundle\Entity\Call
  * @package ApiBundle\Tests\Entity
  */

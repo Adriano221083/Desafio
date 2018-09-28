@@ -28,7 +28,6 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
     {
 
         foreach ($this->planData as $planDatum) {
-            /** @var Plan $call */
             $plan = new Plan();
             $plan
                 ->setName($planDatum[0])
@@ -47,6 +46,6 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }
