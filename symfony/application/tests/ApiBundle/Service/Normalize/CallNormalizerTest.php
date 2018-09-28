@@ -5,7 +5,6 @@ namespace Tests\ApiBundle\Service\Normalize;
 use ApiBundle\Entity\Call;
 use ApiBundle\Entity\Plan;
 use ApiBundle\Service\Normalize\CallNormalizer;
-use ApiBundle\Service\Strategy\PlanRateCalculation;
 
 /**
  * Class CallNormalizerTest
@@ -55,5 +54,4 @@ class CallNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('name', $normalizedCall['plan']);
         $this->assertArrayHasKey('time', $normalizedCall['plan']);
     }
-
 }
