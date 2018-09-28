@@ -25,7 +25,7 @@ class RateCalculation implements RateCalculationInterface
      */
     public function calculate()
     {
-        return $this->call->setRateCost($this->call->getTime() * $this->call->getRate());
+        return $this->call->setRateCost(round($this->call->getTime() * $this->call->getRate()));
     }
 
     /**
