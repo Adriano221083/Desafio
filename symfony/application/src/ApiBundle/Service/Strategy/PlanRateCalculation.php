@@ -17,16 +17,35 @@ use ApiBundle\Entity\Call;
  */
 class PlanRateCalculation implements RateCalculationInterface
 {
+    /** @var Call $call */
+    private $call;
+
+    const CALL_RATE_PERCENTAGE = 0.10;
+
     public function calculate()
     {
-        /** @var Call $call */
-        $call = new Call();
+        $this->call->setPlanRateCost(0);
 
-        return $call;
+        $diffCallTimeAndPlanRateTime = $this->call->getTime() - $this->call->getPlan()->getRate();
+
+        if ($diffCallTimeAndPlanRateTime > 0) {
+            $additionalCallRatePercentage = $this->call->getRate() * self::CALL_RATE_PERCENTAGE;
+            $planRateCost = $diffCallTimeAndPlanRateTime * ($this->call->getRate() + $additionalCallRatePercentage);
+
+            $this->call->setPlanRateCost($planRateCost);
+        }
+
+        return $this->call;
     }
 
+    /**
+     * @param Call $call
+     * @return $this
+     */
     public function setCall(Call $call)
     {
-        return new Call();
+        $this->call = $call;
+
+        return $this;
     }
 }
