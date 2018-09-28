@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\ApiBundle\Service\Game;
+namespace Tests\ApiBundle\Service\Strategy;
 
 use ApiBundle\Entity\Call;
 use ApiBundle\Entity\Plan;
@@ -10,7 +10,7 @@ use ApiBundle\Service\Strategy\PlanRateCalculation;
  * Class PlanRateCalculationTest
  * @author Rafael Silveira <rsilveiracc@gmail.com>
  * @covers \ApiBundle\Service\Strategy\PlanRateCalculation
- * @package ApiBundle\Tests\Entity
+ * @package ApiBundle\Tests\Service\Strategy
  */
 class PlanRateCalculationTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,7 +26,6 @@ class PlanRateCalculationTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \ApiBundle\Service\Strategy\PlanRateCalculation::setCall
      * @return Call $call
-     * @depends testRegistrationWeakPassword
      */
     public function testSetCall()
     {
@@ -58,6 +57,12 @@ class PlanRateCalculationTest extends \PHPUnit_Framework_TestCase
      */
     public function testCalculate($call)
     {
+        $call = $this
+            ->planRateCalculation
+            ->setCall($call)
+            ->calculate();
 
+        $this->assertInstanceOf("\ApiBundle\Entity\Call", $call);
+        $this->assertEquals(194.0, $call->getPlanRateCost());
     }
 }

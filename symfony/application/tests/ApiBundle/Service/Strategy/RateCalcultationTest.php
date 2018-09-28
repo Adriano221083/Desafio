@@ -1,21 +1,20 @@
 <?php
 
-namespace Tests\ApiBundle\Service\Game;
+namespace Tests\ApiBundle\Service\Strategy;
 
 use ApiBundle\Entity\Call;
 use ApiBundle\Entity\Plan;
-use ApiBundle\Service\Strategy\PlanRateCalculation;
 use ApiBundle\Service\Strategy\RateCalculation;
 
 /**
  * Class RateCalcultationTest
  * @author Rafael Silveira <rsilveiracc@gmail.com>
  * @covers \ApiBundle\Service\Strategy\RateCalculation
- * @package ApiBundle\Tests\Entity
+ * @package ApiBundle\Tests\Strategy
  */
-class RateCalcultationTest extends \PHPUnit_Framework_TestCase
+class RateCalculationTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  PlanRateCalculation */
+    /** @var  RateCalculation */
     private $rateCalculation;
 
 
@@ -27,7 +26,6 @@ class RateCalcultationTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \ApiBundle\Service\Strategy\RateCalculation::setCall
      * @return Call $call
-     * @depends testRegistrationWeakPassword
      */
     public function testSetCall()
     {
@@ -47,7 +45,7 @@ class RateCalcultationTest extends \PHPUnit_Framework_TestCase
 
         $rateCalculation = $this->rateCalculation->setCall($call);
 
-        $this->assertInstanceOf("\ApiBundle\Service\Strategy\PlanRateCalculation", $rateCalculation);
+        $this->assertInstanceOf("\ApiBundle\Service\Strategy\RateCalculation", $rateCalculation);
 
         return $call;
     }
@@ -59,6 +57,12 @@ class RateCalcultationTest extends \PHPUnit_Framework_TestCase
      */
     public function testCalculate($call)
     {
+        $call = $this
+            ->rateCalculation
+            ->setCall($call)
+            ->calculate();
 
+        $this->assertInstanceOf("\ApiBundle\Entity\Call", $call);
+        $this->assertEquals(234.0, $call->getRateCost());
     }
 }
