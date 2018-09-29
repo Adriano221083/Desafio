@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/rsilveira65/fale-mais.svg?branch=master)](https://travis-ci.com/rsilveira65/fale-mais)
 # fale-mais
 ## Desafio
 
