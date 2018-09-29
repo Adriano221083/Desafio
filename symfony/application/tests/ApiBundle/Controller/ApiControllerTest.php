@@ -2,7 +2,13 @@
 
 namespace Tests\ApiBundle\Controller;
 
-class DefaultControllerTest extends \PHPUnit_Framework_TestCase
+/**
+ * Class ApiControllerTest
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @covers \ApiBundle\Controller\ApiController
+ * @package ApiBundle\Tests\Controller
+ */
+class ApiControllerTest extends \PHPUnit_Framework_TestCase
 {
     /** @var  \GuzzleHttp\Client $client */
     private $client;
@@ -11,11 +17,11 @@ class DefaultControllerTest extends \PHPUnit_Framework_TestCase
     {
         $this->client = new \GuzzleHttp\Client(['base_uri' => 'http://nginx/']);
     }
-    public function tearDown()
-    {
-        $this->client = null;
-    }
-    public function testNewGame()
+
+    /**
+     * @covers \ApiBundle\Controller\ApiController::calculateAction()
+     */
+    public function testCalculate()
     {
         $response = $this->client->post('/api/calculate/1/1/123');
 
@@ -33,6 +39,5 @@ class DefaultControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('id', $data['plan']);
         $this->assertArrayHasKey('name', $data['plan']);
         $this->assertArrayHasKey('time', $data['plan']);
-
     }
 }

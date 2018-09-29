@@ -10,6 +10,7 @@ echo 'cleaning cache';
 $commands =
     [
         'php "%s/../bin/console" cache:clear --env=%s --no-warmup',
+        'php "%s/../bin/console" doctrine:fixtures:load --purge-with-truncate',
     ];
 
 foreach ($commands as $command) {
