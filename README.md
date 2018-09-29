@@ -64,6 +64,11 @@ docker exec application bin/console doctrine:fixture:load -n
 
 Access your browser on [http://localhost](http://localhost)
 
+
+![](https://i.imgur.com/wdykjO6.png)
+![](https://i.imgur.com/fgSLg1L.png)
+
+
 ## API Route
 [Download the Postman collection](https://www.getpostman.com/collections/7dd20bc51ae2802214ea)
 
