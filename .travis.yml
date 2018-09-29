@@ -6,6 +6,8 @@ services:
 before_script:
   - docker-compose up -d --build
   - docker-compose exec --user=root application composer install
+  - docker-compose exec --user=root application bin/console doctrine:schema:update --force
+  - docker-compose exec --user=root application bin/console doctrine:fixtures:load
 script:
   - docker exec --user=root application ./vendor/bin/simple-phpunit
 matrix:
