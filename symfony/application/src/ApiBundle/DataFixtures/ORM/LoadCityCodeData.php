@@ -1,24 +1,26 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: rafael
+ * Date: 29/09/18
+ * Time: 11:05
+ */
 
 namespace GameBundle\DataFixtures\ORM;
 
-use ApiBundle\Entity\Plan;
+use ApiBundle\Entity\CityCode;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 /**
- * Class LoadPlanData
+ * Class LoadCityCodeData
  * @author Rafael Silveira <rsilveiracc@gmail.com>
  * @package ApiBundle\DataFixtures\ORM
  */
-class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
+class LoadCityCodeData extends AbstractFixture implements OrderedFixtureInterface
 {
-    private $planData = [
-        ['FaleMais 30', 30],
-        ['FaleMais 60', 60],
-        ['FaleMais 120', 120]
-    ];
+    private $cityCodeData = ['011', '016', '017', '018'];
 
     /**
      *
@@ -26,14 +28,11 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
+        foreach ($this->cityCodeData as $cityCodeDatum) {
+            $cityCode = new CityCode();
+            $cityCode->setCode($cityCodeDatum);
 
-        foreach ($this->planData as $planDatum) {
-            $plan = new Plan();
-            $plan
-                ->setName($planDatum[0])
-                ->setTime($planDatum[1]);
-
-            $manager->persist($plan);
+            $manager->persist($cityCode);
         }
 
         $manager->flush();
@@ -46,6 +45,7 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-        return 3;
+        return 1;
     }
+
 }

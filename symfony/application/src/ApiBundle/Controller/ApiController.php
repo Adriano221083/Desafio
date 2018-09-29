@@ -3,7 +3,9 @@
 namespace ApiBundle\Controller;
 
 use ApiBundle\Entity\Call;
+use ApiBundle\Entity\CityCode;
 use ApiBundle\Entity\Plan;
+use ApiBundle\Repository\CallRepository;
 use ApiBundle\Service\Normalize\CallNormalizer;
 use ApiBundle\Service\Strategy\PlanRateCalculation;
 use ApiBundle\Service\Strategy\RateCalculation;
@@ -23,34 +25,56 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ApiController extends AbstractController
 {
     /**
-     * @Route("/calculate/{call}/{plan}/{time}", name="api_calculate")
+     * @Route("/calculate/{origin}/{destination}/{plan}/{time}", name="api_calculate")
      * @Method({"GET", "POST"})
-     * @param Call $call
+     * @param CityCode $origin
+     * @param CityCode $destination
      * @param Plan $plan
      * @param int $time
      * @return JsonResponse
      */
-    public function calculateAction(Call $call, Plan $plan, int $time)
+    public function calculateAction(CityCode $origin, CityCode $destination, Plan $plan, int $time)
     {
         try {
-            /** @var RateCalculation $planRateCalculationService */
-            $rateCalculation = $this->get('api.rate_calculation');
-            /** @var PlanRateCalculation $planRateCalculationService */
-            $planRateCalculation = $this->get('api.plan_rate_calculation');
-            /** @var CallNormalizer $callNormalizer */
+            /** @var CallRepository $callRepository */
+            $callRepository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository(Call::class);
+
+            $call = $callRepository->findByOriginAndDestination($origin, $destination);
+
             $callNormalizer = $this->get('api.call_normalizer');
 
-            $call
-                ->setPlan($plan)
-                ->setTime($time);
+            if ($call) {
+                /** @var RateCalculation $planRateCalculationService */
+                $rateCalculation = $this->get('api.rate_calculation');
+                /** @var PlanRateCalculation $planRateCalculationService */
+                $planRateCalculation = $this->get('api.plan_rate_calculation');
+                /** @var CallNormalizer $callNormalizer */
+                $callNormalizer = $this->get('api.call_normalizer');
 
-            $call = $rateCalculation
-                ->setCall($call)
-                ->calculate();
+                $call
+                    ->setPlan($plan)
+                    ->setTime($time);
 
-            $call = $planRateCalculation
-                ->setCall($call)
-                ->calculate();
+                $call = $rateCalculation
+                    ->setCall($call)
+                    ->calculate();
+
+                $call = $planRateCalculation
+                    ->setCall($call)
+                    ->calculate();
+            } else {
+                $call = new Call();
+                $call
+                    ->setOrigin($origin)
+                    ->setDestination($destination)
+                    ->setPlan($plan)
+                    ->setTime($time)
+                    ->setRateCost(null)
+                    ->setRate(null);
+            }
 
             return $this->createResponse($callNormalizer->normalize($call), Response::HTTP_OK);
 

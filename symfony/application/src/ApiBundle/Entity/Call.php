@@ -26,12 +26,22 @@ class Call
      *
      * @ORM\Column(name="origin", type="string")
      */
+
+    /**
+     * @var CityCode
+     * Many Calls have One Origin
+     *
+     * @ORM\ManyToOne(targetEntity="CityCode", inversedBy="calls")
+     * @ORM\JoinColumn(name="origin_id", referencedColumnName="id")
+     */
     private $origin;
 
     /**
-     * @var int
+     * @var CityCode
+     * Many Calls have One Destination
      *
-     * @ORM\Column(name="destination", type="string")
+     * @ORM\ManyToOne(targetEntity="CityCode", inversedBy="calls")
+     * @ORM\JoinColumn(name="destination_id", referencedColumnName="id")
      */
     private $destination;
 
@@ -77,7 +87,7 @@ class Call
     /**
      * Set origin
      *
-     * @param int $origin
+     * @param CityCode $origin
      *
      * @return Call
      */
@@ -101,7 +111,7 @@ class Call
     /**
      * Set destination
      *
-     * @param int $destination
+     * @param CityCode $destination
      *
      * @return Call
      */
