@@ -2,6 +2,8 @@
 
 namespace Tests\ApiBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Client;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -10,9 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
  * @covers \ApiBundle\Controller\ApiController
  * @package ApiBundle\Tests\Controller
  */
-class ApiControllerTest extends \PHPUnit_Framework_TestCase
+class ApiControllerTest extends WebTestCase
 {
-    /** @var  \GuzzleHttp\Client $client */
+    /** @var Client */
     private $client;
 
     private $testCases = [
@@ -24,7 +26,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->client = new \GuzzleHttp\Client(['base_uri' => 'http://nginx/']);
+        $this->client = static::createClient();
+
     }
 
     /**
@@ -33,7 +36,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     public function testCalculate()
     {
         foreach ($this->testCases as $testCase) {
-            $response = $this->client->post(
+
+            $this->client->request('POST',
                 sprintf(
                     '/api/calculate/%s/%s/%s/%s',
                     $testCase['origin'],
@@ -42,10 +46,9 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
                     $testCase['time']
                 )
             );
+            $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
 
-            $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
-
-            $data = json_decode($response->getBody(), true);
+            $data = json_decode( $this->client->getResponse()->getContent(), true);
 
             $this->assertEquals($testCase['rateCost'], $data['rateCost']);
             $this->assertEquals($testCase['planRateCost'], $data['planRateCost']);
