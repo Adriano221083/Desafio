@@ -25,7 +25,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testCalculate()
     {
-        $response = $this->client->post('/api/calculate/1/1/123');
+        $response = $this->client->post('/api/calculate/1/3/2/80');
 
         $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
 

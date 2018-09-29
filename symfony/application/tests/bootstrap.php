@@ -9,8 +9,11 @@
 echo 'cleaning cache';
 $commands =
     [
-        'php "%s/../bin/console" cache:clear --env=%s --no-warmup',
-        'php "%s/../bin/console" doctrine:fixtures:load --purge-with-truncate',
+        'php "%s/../bin/console" cache:clear --env=dev --no-warmup',
+        'php "%s/../bin/console" cache:clear --env=prod --no-warmup',
+        'php "%s/../bin/console" doctrine:schema:drop --force',
+        'php "%s/../bin/console" doctrine:schema:update --force',
+        'php "%s/../bin/console" doctrine:fixtures:load',
     ];
 
 foreach ($commands as $command) {
@@ -21,8 +24,7 @@ function executeCommand(string $command) {
     passthru(
         sprintf(
             $command,
-            __DIR__,
-            'dev'
+            __DIR__
         )
     );
 }

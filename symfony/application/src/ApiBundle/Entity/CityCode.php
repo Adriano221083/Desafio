@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CityCode
  *
- * @ORM\Table(name="city_code")
+ * @ORM\Table(name="city_codes")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CityCodeRepository")
  */
 class CityCode

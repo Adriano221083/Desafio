@@ -2,6 +2,7 @@
 namespace Tests\ApiBundle\Entity;
 
 use ApiBundle\Entity\Call;
+use ApiBundle\Entity\CityCode;
 use ApiBundle\Entity\Plan;
 
 /**
@@ -26,11 +27,11 @@ class CallTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertNull($this->call->getId());
 
-        $this->call->setOrigin('015');
-        $this->assertEquals('015', $this->call->getOrigin());
+        $this->call->setOrigin(new CityCode());
+        $this->assertEquals(new CityCode(), $this->call->getOrigin());
 
-        $this->call->setDestination('053');
-        $this->assertEquals('053', $this->call->getDestination());
+        $this->call->setDestination(new CityCode());
+        $this->assertEquals(new CityCode(), $this->call->getDestination());
 
         $this->call->setPlanRateCost(34.4);
         $this->assertEquals(34.4, $this->call->getPlanRateCost());
