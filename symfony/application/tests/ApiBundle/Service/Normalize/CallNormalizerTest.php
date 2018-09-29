@@ -3,6 +3,7 @@
 namespace Tests\ApiBundle\Service\Normalize;
 
 use ApiBundle\Entity\Call;
+use ApiBundle\Entity\CityCode;
 use ApiBundle\Entity\Plan;
 use ApiBundle\Service\Normalize\CallNormalizer;
 
@@ -30,8 +31,8 @@ class CallNormalizerTest extends \PHPUnit_Framework_TestCase
     {
         $call = new Call();
         $call
-            ->setOrigin('011')
-            ->setDestination('016')
+            ->setOrigin(new CityCode())
+            ->setDestination(new CityCode())
             ->setRate(1.9)
             ->setTime(123);
 
