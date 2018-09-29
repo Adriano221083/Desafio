@@ -91,8 +91,8 @@ POST: http://localhost/api/calculate/1/3/2/80
     },
     "rate": 1.7,
     "time": 80,
-    "rateCost": 136,
-    "planRateCost": 37,
+    "rateCost": "136.00",
+    "planRateCost": "37.40",
     "plan": {
         "id": 2,
         "name": "FaleMais 60",
