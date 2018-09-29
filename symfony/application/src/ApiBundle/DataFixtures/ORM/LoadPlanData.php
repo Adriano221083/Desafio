@@ -26,7 +26,6 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-
         foreach ($this->planData as $planDatum) {
             $plan = new Plan();
             $plan

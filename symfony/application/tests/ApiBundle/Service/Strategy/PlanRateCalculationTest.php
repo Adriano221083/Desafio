@@ -63,6 +63,6 @@ class PlanRateCalculationTest extends \PHPUnit_Framework_TestCase
             ->calculate();
 
         $this->assertInstanceOf("\ApiBundle\Entity\Call", $call);
-        $this->assertEquals(194.0, $call->getPlanRateCost());
+        $this->assertEquals(194.37, $call->getPlanRateCost());
     }
 }

@@ -13,10 +13,9 @@
                     <div class="form-group">
                         <label for="origin">Origin</label>
                         <select class="form-control" id="origin">
-                            <option value="1">011</option>
-                            <option value="2">016</option>
-                            <option value="3">017</option>
-                            <option value="4">018</option>
+                            {% for code in codes %}
+                                <option value="{{ code.id }}">{{ code.code }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
@@ -33,19 +32,18 @@
                     <div class="form-group">
                         <label for="destination">Destination</label>
                         <select class="form-control" id="destination">
-                            <option value="1">011</option>
-                            <option value="2">016</option>
-                            <option value="3">017</option>
-                            <option value="4">018</option>
+                            {% for code in codes %}
+                                <option value="{{ code.id }}">{{ code.code }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="plan">Plan</label>
                         <select class="form-control" id="plan">
-                            <option value="1">FaleMais 30</option>
-                            <option value="2">FaleMais 60</option>
-                            <option value="3">FaleMais 120</option>
+                            {% for plan in plans %}
+                                <option value="{{ plan.id }}">{{ plan.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

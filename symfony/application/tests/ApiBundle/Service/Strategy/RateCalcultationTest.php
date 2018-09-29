@@ -63,6 +63,6 @@ class RateCalculationTest extends \PHPUnit_Framework_TestCase
             ->calculate();
 
         $this->assertInstanceOf("\ApiBundle\Entity\Call", $call);
-        $this->assertEquals(234.0, $call->getRateCost());
+        $this->assertEquals(233.70, $call->getRateCost());
     }
 }

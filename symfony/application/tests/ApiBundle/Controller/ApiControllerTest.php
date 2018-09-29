@@ -17,8 +17,8 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
 
     private $testCases = [
         ['origin' => 1, 'destination' => 2, 'plan' => 1, 'time' => 20, 'planRateCost'=> 0, 'rateCost' => 38],
-        ['origin' => 1, 'destination' => 3, 'plan' => 2, 'time' => 80, 'planRateCost'=> 37, 'rateCost' => 136],
-        ['origin' => 4, 'destination' => 1, 'plan' => 3, 'time' => 200, 'planRateCost'=> 167, 'rateCost' => 380],
+        ['origin' => 1, 'destination' => 3, 'plan' => 2, 'time' => 80, 'planRateCost'=> 37.40, 'rateCost' => 136],
+        ['origin' => 4, 'destination' => 1, 'plan' => 3, 'time' => 200, 'planRateCost'=> 167.20, 'rateCost' => 380],
         ['origin' => 4, 'destination' => 3, 'plan' => 1, 'time' => 100, 'planRateCost'=> null, 'rateCost' => null],
     ];
 

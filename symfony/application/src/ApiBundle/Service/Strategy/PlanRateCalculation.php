@@ -32,7 +32,7 @@ class PlanRateCalculation implements RateCalculationInterface
             $additionalCallRatePercentage = $this->call->getRate() * self::CALL_RATE_PERCENTAGE;
             $planRateCost = $diffCallTimeAndPlanRateTime * ($this->call->getRate() + $additionalCallRatePercentage);
 
-            $this->call->setPlanRateCost(round($planRateCost));
+            $this->call->setPlanRateCost(bcdiv($planRateCost, 1, 2));
         }
 
         return $this->call;
