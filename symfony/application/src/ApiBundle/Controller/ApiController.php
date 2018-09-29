@@ -70,7 +70,7 @@ class ApiController extends AbstractController
             $call = $planRateCalculation
                 ->setCall($call)
                 ->calculate();
-            
+
             return $this->createResponse($callNormalizer->normalize($call), Response::HTTP_OK);
 
         } catch (\Exception $ex) {
