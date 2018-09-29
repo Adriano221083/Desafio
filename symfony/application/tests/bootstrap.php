@@ -11,9 +11,9 @@ $commands =
     [
         'php "%s/../bin/console" cache:clear --env=dev --no-warmup',
         'php "%s/../bin/console" cache:clear --env=prod --no-warmup',
-        'php "%s/../bin/console" doctrine:schema:drop --force',
-        'php "%s/../bin/console" doctrine:schema:update --force',
-        'php "%s/../bin/console" doctrine:fixtures:load',
+//        'php "%s/../bin/console" doctrine:schema:drop --force',
+//        'php "%s/../bin/console" doctrine:schema:update --force',
+//        'php "%s/../bin/console" doctrine:fixtures:load',
     ];
 
 foreach ($commands as $command) {
