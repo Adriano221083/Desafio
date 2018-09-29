@@ -4,6 +4,7 @@ php:
 services:
   - docker
 before_script:
+  - cp .env_dist .env
   - docker-compose up -d --build
   - docker-compose exec --user=root application composer install
   - docker-compose exec --user=root application bin/console doctrine:schema:update --force
