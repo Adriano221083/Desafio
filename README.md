@@ -50,6 +50,10 @@ cp symfony/application/app/config/parameters.yml.dist symfony/application/app/co
 ```
 
 ```sh
+cp .env_dist .env
+```
+
+```sh
 docker-compose up -d
 ```
 
