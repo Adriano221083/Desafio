@@ -52,7 +52,7 @@ class ApiController extends AbstractController
                 ->setCall($call)
                 ->calculate();
 
-            return $this->createResponse($callNormalizer->normalize($call),Response::HTTP_OK);
+            return $this->createResponse($callNormalizer->normalize($call), Response::HTTP_OK);
 
         } catch (\Exception $ex) {
             return $this->createResponse($ex, Response::HTTP_INTERNAL_SERVER_ERROR);

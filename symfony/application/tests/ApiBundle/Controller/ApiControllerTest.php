@@ -2,6 +2,8 @@
 
 namespace Tests\ApiBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * Class ApiControllerTest
  * @author Rafael Silveira <rsilveiracc@gmail.com>
@@ -25,7 +27,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
     {
         $response = $this->client->post('/api/calculate/1/1/123');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
 
         $data = json_decode($response->getBody(), true);
 
