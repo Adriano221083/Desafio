@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libicu-dev \
   && apt-get clean; rm -rf /var/lib/apt/lists/* \
   ## Install php extensions
-  && docker-php-ext-install curl intl json mbstring pdo pdo_mysql opcache zip \
+  && docker-php-ext-install curl intl json mbstring pdo pdo_mysql opcache zip bcmath \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug
 
