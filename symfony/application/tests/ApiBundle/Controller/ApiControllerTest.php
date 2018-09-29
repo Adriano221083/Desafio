@@ -27,7 +27,6 @@ class ApiControllerTest extends WebTestCase
     public function setUp()
     {
         $this->client = static::createClient();
-
     }
 
     /**
@@ -46,9 +45,10 @@ class ApiControllerTest extends WebTestCase
                     $testCase['time']
                 )
             );
+
             $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
 
-            $data = json_decode( $this->client->getResponse()->getContent(), true);
+            $data = json_decode($this->client->getResponse()->getContent(), true);
 
             $this->assertEquals($testCase['rateCost'], $data['rateCost']);
             $this->assertEquals($testCase['planRateCost'], $data['planRateCost']);
