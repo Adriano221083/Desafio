@@ -28,3 +28,77 @@ Ex:
 | 011 | 017 | 80 | FaleMais 60 | $ 37,40 | $ 136,00 |
 | 018 | 011 | 200 | FaleMais 120 | $ 167,20 | $ 380,00 |
 | 018 | 017 | 100 | FaleMais 30 | - | - |
+
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+Just make sure you have [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/) properly installed.
+
+```sh
+docker --version
+docker-compose --version
+```
+
+### Installing
+
+```sh
+cp symfony/application/app/config/parameters.yml.dist symfony/application/app/config/parameters.yml
+```
+
+```sh
+docker-compose up -d
+```
+
+Create the database schema.
+
+```sh
+docker exec application bin/console doctrine:schema:update --force
+```
+
+```sh
+docker exec application bin/console doctrine:fixture:load -n
+```
+
+Access your browser on [http://localhost](http://localhost)
+
+## API Route
+[Download the Postman collection](https://www.getpostman.com/collections/7dd20bc51ae2802214ea)
+
+### Calculate
+```bash
+POST: http://localhost/api/calculate/1/3/2/80
+```
+
+##### Response:
+```bash
+{
+    "id": 3,
+    "origin": {
+        "id": 1,
+        "code": "011"
+    },
+    "destination": {
+        "id": 3,
+        "code": "017"
+    },
+    "rate": 1.7,
+    "time": 80,
+    "rateCost": 136,
+    "planRateCost": 37,
+    "plan": {
+        "id": 2,
+        "name": "FaleMais 60",
+        "time": 60
+    }
+}
+```
+
+## Unit Tests
+Get unit test summary on executing
+
+```sh
+docker exec application composer test
+```
