@@ -7,7 +7,9 @@ use ApiBundle\Entity\CityCode;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * CallRepository
+ * Class CallRepository
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Repository
  */
 class CallRepository extends EntityRepository
 {

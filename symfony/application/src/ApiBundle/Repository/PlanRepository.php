@@ -5,7 +5,9 @@ namespace ApiBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * PlanRepository
+ * Class PlanRepository
+ * @author Rafael Silveira <rsilveiracc@gmail.com>
+ * @package ApiBundle\Repository
  */
 class PlanRepository extends EntityRepository
 {
