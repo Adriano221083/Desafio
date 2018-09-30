@@ -64,8 +64,16 @@ Create the database schema.
 docker exec application bin/console doctrine:schema:update --force
 ```
 
+Populate the database.
+
 ```sh
 docker exec application bin/console doctrine:fixture:load -n
+```
+
+Clear cache
+
+```sh
+docker exec application bin/console doctrine:cache:clear --env=prod
 ```
 
 Access your browser on [http://localhost](http://localhost)
