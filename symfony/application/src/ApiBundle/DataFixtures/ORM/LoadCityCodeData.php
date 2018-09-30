@@ -6,7 +6,7 @@
  * Time: 11:05
  */
 
-namespace GameBundle\DataFixtures\ORM;
+namespace ApiBundle\DataFixtures\ORM;
 
 use ApiBundle\Entity\CityCode;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -20,10 +20,10 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadCityCodeData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /** @var array $cityCodeData */
     private $cityCodeData = ['011', '016', '017', '018'];
 
     /**
-     *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)

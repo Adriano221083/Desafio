@@ -20,7 +20,7 @@ abstract class AbstractController extends Controller
      * @param int $responseCode
      * @return JsonResponse
      */
-    protected function createResponse($responseContent, $responseCode = null)
+    protected function createResponse($responseContent, $responseCode = null) : JsonResponse
     {
         if ($responseContent instanceof \Exception) {
             $responseCode = !$responseCode ? Response::HTTP_BAD_REQUEST : $responseCode;
@@ -47,7 +47,7 @@ abstract class AbstractController extends Controller
     /**
      * @return CallRepository
      */
-    protected function getCallRepository()
+    protected function getCallRepository() : CallRepository
     {
        return $this
                 ->getDoctrine()

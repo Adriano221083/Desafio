@@ -23,7 +23,7 @@ class RateCalculation implements RateCalculationInterface
     /**
      * @return Call
      */
-    public function calculate()
+    public function calculate() : Call
     {
         return $this->call->setRateCost(
             bcdiv(
@@ -38,7 +38,7 @@ class RateCalculation implements RateCalculationInterface
      * @param Call $call
      * @return $this
      */
-    public function setCall(Call $call)
+    public function setCall(Call $call) : RateCalculation
     {
         $this->call = $call;
 

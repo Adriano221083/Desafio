@@ -1,6 +1,6 @@
 <?php
 
-namespace GameBundle\DataFixtures\ORM;
+namespace ApiBundle\DataFixtures\ORM;
 
 use ApiBundle\Entity\Plan;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -14,6 +14,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /** @var array $planData */
     private $planData = [
         ['FaleMais 30', 30],
         ['FaleMais 60', 60],
@@ -21,7 +22,6 @@ class LoadPlanData extends AbstractFixture implements OrderedFixtureInterface
     ];
 
     /**
-     *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)

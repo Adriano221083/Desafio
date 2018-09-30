@@ -22,7 +22,10 @@ class PlanRateCalculation implements RateCalculationInterface
 
     const CALL_RATE_PERCENTAGE = 0.10;
 
-    public function calculate()
+    /**
+     * @return Call
+     */
+    public function calculate() : Call
     {
         $this->call->setPlanRateCost(0);
 
@@ -42,7 +45,7 @@ class PlanRateCalculation implements RateCalculationInterface
      * @param Call $call
      * @return $this
      */
-    public function setCall(Call $call)
+    public function setCall(Call $call) : PlanRateCalculation
     {
         $this->call = $call;
 

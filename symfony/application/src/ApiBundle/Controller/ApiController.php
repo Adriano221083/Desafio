@@ -5,7 +5,6 @@ namespace ApiBundle\Controller;
 use ApiBundle\Entity\Call;
 use ApiBundle\Entity\CityCode;
 use ApiBundle\Entity\Plan;
-use ApiBundle\Repository\CallRepository;
 use ApiBundle\Service\Normalize\CallNormalizer;
 use ApiBundle\Service\Strategy\PlanRateCalculation;
 use ApiBundle\Service\Strategy\RateCalculation;
@@ -26,14 +25,14 @@ class ApiController extends AbstractController
 {
     /**
      * @Route("/calculate/{origin}/{destination}/{plan}/{time}", name="api_calculate")
-     * @Method({"GET", "POST"})
+     * @Method("POST")
      * @param CityCode $origin
      * @param CityCode $destination
      * @param Plan $plan
      * @param int $time
      * @return JsonResponse
      */
-    public function calculateAction(CityCode $origin, CityCode $destination, Plan $plan, int $time)
+    public function calculateAction(CityCode $origin, CityCode $destination, Plan $plan, int $time) : JsonResponse
     {
         try {
 

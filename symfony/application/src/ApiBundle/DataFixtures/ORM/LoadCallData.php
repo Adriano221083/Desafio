@@ -1,6 +1,6 @@
 <?php
 
-namespace GameBundle\DataFixtures\ORM;
+namespace ApiBundle\DataFixtures\ORM;
 
 use ApiBundle\Entity\Call;
 use ApiBundle\Entity\CityCode;
@@ -15,6 +15,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadCallData extends AbstractFixture implements OrderedFixtureInterface
 {
+    /** @var array $callData  */
     private $callData = [
         ['011', '016', 1.90],
         ['016', '011', 2.90],
@@ -25,7 +26,6 @@ class LoadCallData extends AbstractFixture implements OrderedFixtureInterface
     ];
 
     /**
-     *
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
