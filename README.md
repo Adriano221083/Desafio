@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/rsilveira65/fale-mais.svg?branch=master)](https://travis-ci.com/rsilveira65/fale-mais)
+[![Coverage Status](https://coveralls.io/repos/github/rsilveira65/fale-mais/badge.svg?branch=master)](https://coveralls.io/github/rsilveira65/fale-mais?branch=master)
 # fale-mais
 ## Desafio
 

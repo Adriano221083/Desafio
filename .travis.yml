@@ -19,3 +19,6 @@ matrix:
 notifications:
     on_success: never
     on_failure: always
+after_success:
+#  - travis_retry docker exec --user=root application php vendor/bin/coveralls
+  - docker exec --user=root application ./vendor/bin/simple-phpunit --coverage-clover build/logs/clover.xml
